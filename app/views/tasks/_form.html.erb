@@ -1,0 +1,6 @@
+<%= simple_form_for @task do |f| %>
+	<%= f.text_field :title, :placeholder => 'Insert task' %>
+	<%= select(:task, :priority,  [['High', 0], ['Medium', 1], ['Low', 2]],
+	          {:prompt => 'Select priority'})%>
+	<%= f.submit 'Create task', :class => 'btn btn-default navbar-btn' %>
+<% end %>
