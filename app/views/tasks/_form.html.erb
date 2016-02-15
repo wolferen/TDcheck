@@ -1,6 +1,9 @@
 <%= simple_form_for @task do |f| %>
 	<%= f.text_field :title, :placeholder => 'Insert task' %>
-	<%= select(:task, :priority,  [['High', 0], ['Medium', 1], ['Low', 2]],
+	<br><%= select(:task, :priority,  [['High', 0], ['Medium', 1], ['Low', 2]],
 	          {:prompt => 'Select priority'})%>
-	<%= f.submit 'Create task', :class => 'btn btn-default navbar-btn' %>
+
+	<br>Select Start date <%= f.date_select :started_at %>
+	<br>Select Deadline date <%= f.date_select :deadline %>
+	<br><%= f.submit 'Create task', :class => 'btn btn-default navbar-btn' %>
 <% end %>

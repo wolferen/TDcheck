@@ -6,4 +6,5 @@ Rails.application.routes.draw do
  		end
  	end
   root 'tasks#index'
+  get 'todolist' => 'tasks#todotask'
 end

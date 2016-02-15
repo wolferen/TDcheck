@@ -48,7 +48,7 @@ before_action :find_task, only: [:show, :edit, :update, :destroy]
 	private 
 
 	def task_params
-		params.require(:task).permit(:title, :priority)
+		params.require(:task).permit(:title, :priority, :deadline, :pending, :started_at)
 	end
 
 	def find_task
