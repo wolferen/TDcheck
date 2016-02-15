@@ -7,7 +7,8 @@
 						<div class="col-md-8">
 							<h2 style="opacity: 0.5;" class="task-title"> <strike><%= task.title %> </strike> </h2>
 							<p style="opacity: 0.5;" class="task-sub-title task-desc"> Priority: <%= task.priority %>  </p>
-							<p style="opacity: 0.5;" class="time-created-at task-sub-title">Started in <%= task.started_at.strftime('%d/%m/%Y') %> </p>
+							<p style="opacity: 0.5;" class="time-created-at task-sub-title">
+								Started in <%= task.started_at.try(:strftime, '%d/%m/%Y') %> </p>
 							<p style="opacity: 0.5;" class="task-deadline task-title"> Deadline in <%= task.deadline %> </p>
 							<p style="opacity: 0.5;" class="time-created-at task-sub-title">Created <%= time_ago_in_words(task.created_at) %> ago </p>
 							<p style="opacity: 0.5;" class="time-created-at task-sub-title"> Completed <%= time_ago_in_words(task.completed_at) %> ago </p>
@@ -23,7 +24,7 @@
 						<div class="col-md-8">
 							<h2 class="task-title"><%= link_to task.title, task %></h2>
 							<p class="task-sub-title task-desc"> Priority: <%= task.priority %> </p>
-							<p class="time-created-at task-sub-title">Started in <%= task.started_at %> </p>
+							<p class="time-created-at task-sub-title">Started in <%= task.started_at.try(:strftime, '%d/%m/%Y') %> </p>
 							<p class="time-created-at task-sub-title">Created <%= time_ago_in_words(task.created_at) %> ago</p>
 							<p class="task-deadline task-title"> Deadline in <%= task.deadline %> </p>
 						</div>
