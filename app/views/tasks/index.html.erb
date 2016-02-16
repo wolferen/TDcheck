@@ -1,11 +1,12 @@
 
 <div class sort>
 	<p align='center'>
-		<%#= sort_link @search, :priority, 'Priority' %>
 	Sort by 
 	<%= sort_link @search, :started_at, 'Start date'%> 
 	or
 	<%= sort_link @search, :priority, 'Priority'%>
+	or 
+	<%= sort_link @search, :completed_at, 'Status'%>
 	</p>
 </div>
 
