@@ -1,7 +1,20 @@
+
+<div class sort>
+	<p align='center'>
+		<%#= sort_link @search, :priority, 'Priority' %>
+	Sort by 
+	<%= sort_link @search, :started_at, 'Start date'%> 
+	or
+	<%= sort_link @search, :priority, 'Priority'%>
+	</p>
+</div>
+
 <% if user_signed_in? %>
 	<div class="col-md-6 col-md-offset-3">
+
 		<% @tasks.each do |task| %>
 			<div class="index-wrapper">
+
 				<% if task.completed? %>
 					<div class="row task">
 						<div class="col-md-8">
@@ -9,8 +22,8 @@
 							<p style="opacity: 0.5;" class="task-sub-title task-desc"> Priority: <%= task.priority %>  </p>
 							<p style="opacity: 0.5;" class="time-created-at task-sub-title">
 								Started in <%= task.started_at.try(:strftime, '%d/%m/%Y') %> </p>
-							<p style="opacity: 0.5;" class="task-deadline task-title"> Deadline in <%= task.deadline %> </p>
-							<p style="opacity: 0.5;" class="time-created-at task-sub-title">Created <%= time_ago_in_words(task.created_at) %> ago </p>
+							<p style="opacity: 0.5;" class="task-deadline task-title"> Deadline in <%= task.deadline.try(:strftime, '%d/%m/%Y') %> </p>
+							<p style="opacity: 0.5;" class="time-created-at task-sub-title">Created <%= time_ago_in_words(task.created_at.try(:strftime, '%d/%m/%Y')) %> ago </p>
 							<p style="opacity: 0.5;" class="time-created-at task-sub-title"> Completed <%= time_ago_in_words(task.completed_at) %> ago </p>
 						</div>
 						<div class="col-md-2">
@@ -25,8 +38,8 @@
 							<h2 class="task-title"><%= link_to task.title, task %></h2>
 							<p class="task-sub-title task-desc"> Priority: <%= task.priority %> </p>
 							<p class="time-created-at task-sub-title">Started in <%= task.started_at.try(:strftime, '%d/%m/%Y') %> </p>
-							<p class="time-created-at task-sub-title">Created <%= time_ago_in_words(task.created_at) %> ago</p>
-							<p class="task-deadline task-title"> Deadline in <%= task.deadline %> </p>
+							<p class="task-deadline task-title"> Deadline in <%= task.deadline.try(:strftime, '%d/%m/%Y') %> </p>
+							<p class="time-created-at task-sub-title">Created <%= time_ago_in_words(task.created_at.try(:strftime, '%d/%m/%Y')) %> ago</p>
 						</div>
 						<div class="col-md-2">
 							<p><%= link_to complete_task_path(task), method: :patch do %></p>

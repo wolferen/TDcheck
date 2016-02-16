@@ -3,8 +3,12 @@ before_action :find_task, only: [:show, :edit, :update, :destroy]
 
 	def index
 		if user_signed_in?
-			@tasks = Task.where(:user_id => current_user.id).order('created_at DESC')
+			@search = Task.search(params[:q])
+			@tasks = @search.result.where(:user_id => current_user.id).order('created_at DESC')
 		end
+		# if user_signed_in?
+		# 	@tasks = Task.where(:user_id => current_user.id).order('created_at DESC')
+		# end
 	end
 
 	def new
@@ -48,7 +52,7 @@ before_action :find_task, only: [:show, :edit, :update, :destroy]
 	private 
 
 	def task_params
-		params.require(:task).permit(:title, :priority, :deadline, :pending, :started_at)
+		params.require(:task).permit(:title, :priority, :deadline, :started_at)
 	end
 
 	def find_task
