@@ -1,21 +1,20 @@
-
-<div class sort>
-	<p align='center'>
-	Sort by 
-	<%= sort_link @search, :started_at, 'Start date'%> 
-	or
-	<%= sort_link @search, :priority, 'Priority'%>
-	or 
-	<%= sort_link @search, :completed_at, 'Status'%>
-	</p>
-</div>
-
 <% if user_signed_in? %>
 	<div class="col-md-6 col-md-offset-3">
-
+				<div class='sort'>
+					<%= search_form_for @search do |f| %>
+						<%= f.label :title_cont, 'Task name contain' %>
+						<%= f.text_field :title_cont %>
+						<%= f.submit "search "%>
+					<% end %>
+				Sort by 
+				<%= sort_link @search, :started_at, 'Start date'%> 
+				or
+				<%= sort_link @search, :priority, 'Priority'%>
+				or 
+				<%= sort_link @search, :completed_at, 'Status'%>
+			</div>
 		<% @tasks.each do |task| %>
 			<div class="index-wrapper">
-
 				<% if task.completed? %>
 					<div class="row task">
 						<div class="col-md-8">
