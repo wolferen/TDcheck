@@ -24,7 +24,9 @@
 			</ul>
 			<% if user_signed_in? %>
 				<p class="navbar-text">Logged in as <%= current_user.email %></p>
-				<%= link_to "New Task", new_task_path, class: "navbar-text navbar-link navbar-right" %>
+				<ul class="nav navbar-nav navbar-link navbar-right">
+					<li><%= link_to "New Task", new_task_path  %></li>
+				</ul>
 			<% end %>
 		</div>
 	</nav>

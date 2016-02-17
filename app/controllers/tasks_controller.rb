@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
 before_action :find_task, only: [:show, :edit, :update, :destroy]
-before_filter :curr_user, only: [:show, :edit]
+before_filter :check_user, only: [:show, :edit]
 
 	def index
 		if user_signed_in?
