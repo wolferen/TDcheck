@@ -1,4 +1,8 @@
 <div class="col-md-6 col-md-offset-3">
+	<% @task.errors.each_with_index do |msg, i| %>
+	  <br><%= msg[1] %>
+	<% end %>
+
 	<h1>New Task</h1>
 
 	<%= render 'form' %>
