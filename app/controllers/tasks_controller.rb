@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
 before_action :find_task, only: [:show, :edit, :update, :destroy]
+before_filter :curr_user, only: [:show, :edit]
 
 	def index
 		if user_signed_in?
@@ -9,7 +10,11 @@ before_action :find_task, only: [:show, :edit, :update, :destroy]
 	end
 
 	def new
-		@task = current_user.tasks.build
+		unless current_user
+  		redirect_to new_user_session_path, notice: "You must be logged in to access this section"
+  	else
+			@task = current_user.tasks.build
+		end
 	end
 
 	def show
