@@ -1,6 +1,11 @@
 class Task < ActiveRecord::Base
 belongs_to :user
 enum priority: [:high, :medium, :low]
+	
+	validates :title, 
+          	:presence => {notice: "Title can't be blank." },
+          	:uniqueness => {notice: "Title already exists."},
+          	:length => {:minimum => 4, :maximum => 60, notice: "Must be more that 4 and less than 60 characters"}
 
 	def priority= value
 	  if value.kind_of?(String) and value.to_i.to_s == value

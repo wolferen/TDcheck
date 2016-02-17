@@ -1,6 +1,6 @@
 <% if user_signed_in? %>
 	<div class="col-md-6 col-md-offset-3">
-				<div class='sort'>
+			<div class='sort'>
 					<%= search_form_for @search do |f| %>
 						<%= f.label :title_cont, 'Task name contain' %>
 						<%= f.text_field :title_cont %>

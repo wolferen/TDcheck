@@ -6,9 +6,6 @@ before_action :find_task, only: [:show, :edit, :update, :destroy]
 			@search = Task.search(params[:q])
 			@tasks = @search.result.where(:user_id => current_user.id).order('created_at DESC')
 		end
-		# if user_signed_in?
-		# 	@tasks = Task.where(:user_id => current_user.id).order('created_at DESC')
-		# end
 	end
 
 	def new
@@ -46,7 +43,7 @@ before_action :find_task, only: [:show, :edit, :update, :destroy]
 	def complete
 		@task = Task.find(params[:id])
 		@task.update_attribute(:completed_at, Time.now)
-		redirect_to root_path, notice: "Task successfully completed!"
+		redirect_to root_path, notice: 'Task successfully completed!'
 	end
 
 	private 
