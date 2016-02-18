@@ -6,11 +6,11 @@
 						<%= f.text_field :title_cont %>
 						<%= f.submit "search "%>
 					<% end %>
-				Sort by 
-				<%= sort_link @search, :started_at, 'Start date'%> 
+				Sort by
+				<%= sort_link @search, :started_at, 'Start date'%>
 				or
 				<%= sort_link @search, :priority, 'Priority'%>
-				or 
+				or
 				<%= sort_link @search, :completed_at, 'Status'%>
 			</div>
 		<% @tasks.each do |task| %>
@@ -30,9 +30,9 @@
 							<p><%= link_to task, remote: true, method: :delete, data: { confirm: "Are you sure?" } do %></p>
 								<i class="fa fa-trash fa-lg"></i>
 							<% end %>
-						</div>	
+						</div>
 					</div>
-				<% else %>	
+				<% else %>
 					<div class="row task">
 						<div class="col-md-8">
 							<h2 class="task-title"><%= link_to task.title, task %></h2>
@@ -54,9 +54,9 @@
 					</div>
 				<% end %>
 			</div>
-		<% end %>	
+		<% end %>
 	</div>
 <% else %>
 	<%= render 'static_landing_page' %>
-<% end %>	
+<% end %>
 

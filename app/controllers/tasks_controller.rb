@@ -1,14 +1,14 @@
 class TasksController < ApplicationController
  	before_action :find_task, only: [:show, :edit, :update, :destroy]
 	before_filter :check_user, only: [:show, :edit]
-	
+
 	def index
 		if user_signed_in?
 			@search = Task.search(params[:q])
 			@tasks = @search.result.where(:user_id => current_user.id).order('created_at DESC')
 		end
 	end
-	
+
 	def new
 		unless current_user
   		redirect_to new_user_session_path, notice: "You must be logged in to access this section"
@@ -23,7 +23,7 @@ class TasksController < ApplicationController
 	def edit
 	end
 
-	def create 
+	def create
 		@task = current_user.tasks.build(task_params)
 		if @task.save
 			redirect_to root_path
@@ -50,7 +50,7 @@ class TasksController < ApplicationController
 		redirect_to root_path, notice: 'Task successfully completed!'
 	end
 
-	private 
+	private
 
 	def task_params
 		params.require(:task).permit(:title, :priority, :deadline, :started_at)
