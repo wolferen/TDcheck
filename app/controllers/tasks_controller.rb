@@ -45,19 +45,18 @@ class TasksController < ApplicationController
   end
 
   def complete
-  	@task = Task.find(params[:id])
-	  @task.update_attribute(:completed_at, Time.now)
-	  redirect_to root_path, notice: 'Task successfully completed!'
-  end
+		@task = Task.find(params[:id])
+		@task.update_attribute(:completed_at, Time.now)
+		redirect_to root_path, notice: 'Task successfully completed!'
+	end
 
-  private
+	private
 
-  def task_params
-	  params.require(:task).permit(:title, :priority, :deadline, :started_at)
-  end
+	def task_params
+		params.require(:task).permit(:title, :priority, :deadline, :started_at)
+	end
 
-  def find_task
-	  @task = Task.find(params[:id])
-  end
-
+	def find_task
+		@task = Task.find(params[:id])
+	end
 end
