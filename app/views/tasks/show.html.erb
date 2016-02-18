@@ -1,7 +1,6 @@
 <div class="jumbotron">
 	<h2><%= @task.title %></h2>
 	<p> Priority: <%= @task.priority %></p>
-
 	<%= link_to "Back", root_path, :class => 'btn btn-info' %>
 	<%= link_to "Edit", edit_task_path(@task), :class => 'btn btn-info' %>
 </div>

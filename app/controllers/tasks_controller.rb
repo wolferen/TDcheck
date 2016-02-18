@@ -1,15 +1,11 @@
 class TasksController < ApplicationController
-before_action :find_task, only: [:show, :edit, :update, :destroy]
-before_filter :check_user, only: [:show, :edit]
+ 	before_action :find_task, only: [:show, :edit, :update, :destroy]
+	before_filter :check_user, only: [:show, :edit]
 	
 	def index
 		if user_signed_in?
 			@search = Task.search(params[:q])
 			@tasks = @search.result.where(:user_id => current_user.id).order('created_at DESC')
-			respond_to do |format|
-	    	format.html
-	    	format.json
-	    end
 		end
 	end
 	
@@ -21,7 +17,7 @@ before_filter :check_user, only: [:show, :edit]
 		end
 	end
 
-	def show
+ 	def show
 	end
 
 	def edit
