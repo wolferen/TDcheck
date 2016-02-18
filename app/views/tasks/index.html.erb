@@ -6,12 +6,12 @@
         <%= f.text_field :title_cont %>
         <%= f.submit "search "%>
       <% end %>
-				Sort by
-				<%= sort_link @search, :started_at, 'Start date'%>
-				or
-				<%= sort_link @search, :priority, 'Priority'%>
-				or
-				<%= sort_link @search, :completed_at, 'Status'%>
+        Sort by
+        <%= sort_link @search, :started_at, 'Start date'%>
+        or
+        <%= sort_link @search, :priority, 'Priority'%>
+        or
+        <%= sort_link @search, :completed_at, 'Status'%>
     </div>
     <% @tasks.each do |task| %>
       <div class="index-wrapper">
@@ -51,9 +51,9 @@
               <% end %>
             </div>
           </div>
-			  <% end %>
-		  </div>
-	  <% end %>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 <% else %>
   <%= render 'static_landing_page' %>
