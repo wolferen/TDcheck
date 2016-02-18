@@ -6,15 +6,15 @@ class Task < ActiveRecord::Base
             :presence => {message: "Task can't be blank." },
             :length => {:minimum => 4, :maximum => 60, message: "Task must be more than 4 and less than 60 characters."}
 
- def priority= value
- 	if value.kind_of?(String) and value.to_i.to_s == value
- 		  super value.to_i
- 		else
- 			super value
- 		end
- 	end
+  def priority= value
+    if value.kind_of?(String) and value.to_i.to_s == value
+      super value.to_i
+    else
+      super value
+    end
+  end
 
   def completed?
-  	!completed_at.blank?
+    !completed_at.blank?
   end
 end
