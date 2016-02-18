@@ -1,14 +1,18 @@
 class TasksController < ApplicationController
 before_action :find_task, only: [:show, :edit, :update, :destroy]
 before_filter :check_user, only: [:show, :edit]
-
+	
 	def index
 		if user_signed_in?
 			@search = Task.search(params[:q])
 			@tasks = @search.result.where(:user_id => current_user.id).order('created_at DESC')
+			respond_to do |format|
+	    	format.html
+	    	format.json
+	    end
 		end
 	end
-
+	
 	def new
 		unless current_user
   		redirect_to new_user_session_path, notice: "You must be logged in to access this section"
@@ -42,7 +46,6 @@ before_filter :check_user, only: [:show, :edit]
 
 	def destroy
 		@task.destroy
-		redirect_to root_path
 	end
 
 	def complete

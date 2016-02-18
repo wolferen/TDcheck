@@ -27,7 +27,7 @@
 							<p style="opacity: 0.5;" class="time-created-at task-sub-title"> Completed <%= time_ago_in_words(task.completed_at) %> ago </p>
 						</div>
 						<div class="col-md-2">
-							<p><%= link_to task, method: :delete, data: { confirm: "Are you sure?" } do %></p>
+							<p><%= link_to task, remote: true, method: :delete, data: { confirm: "Are you sure?" } do %></p>
 								<i class="fa fa-trash fa-lg"></i>
 							<% end %>
 						</div>	
@@ -42,19 +42,18 @@
 							<p class="time-created-at task-sub-title">Created <%= time_ago_in_words(task.created_at.try(:strftime, '%d/%m/%Y')) %> ago</p>
 						</div>
 						<div class="col-md-2">
-							<p><%= link_to complete_task_path(task), method: :patch do %></p>
+							<p><%= link_to complete_task_path(task), remote: true,  method: :patch do %></p>
 								<i class="fa fa-check fa-lg"></i>
 							<% end %>
 						</div>
 						<div class="col-md-2">
-							<p><%= link_to task, method: :delete, data: { confirm: "Are you sure?" } do %></p>
+							<p><%= link_to task, remote: true, method: :delete, data: { confirm: "Are you sure?" } do %></p>
 								<i class="fa fa-trash fa-lg"></i>
 							<% end %>
 						</div>
 					</div>
 				<% end %>
 			</div>
-
 		<% end %>	
 	</div>
 <% else %>
