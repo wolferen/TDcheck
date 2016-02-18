@@ -3,18 +3,18 @@ class TasksController < ApplicationController
   before_filter :check_user, only: [:show, :edit]
 
   def index
-	  if user_signed_in?
-		  @search = Task.search(params[:q])
-		  @tasks = @search.result.where(:user_id => current_user.id).order('created_at DESC')
-	  end
+    if user_signed_in?
+      @search = Task.search(params[:q])
+      @tasks = @search.result.where(:user_id => current_user.id).order('created_at DESC')
+    end
   end
 
   def new
-	  unless current_user
-  	  redirect_to new_user_session_path, notice: "You must be logged in to access this section"
- 	  else
-		  @task = current_user.tasks.build
-	  end
+    unless current_user
+      redirect_to new_user_session_path, notice: "You must be logged in to access this section"
+    else
+      @task = current_user.tasks.build
+    end
   end
 
   def show
@@ -24,24 +24,24 @@ class TasksController < ApplicationController
   end
 
   def create
-	  @task = current_user.tasks.build(task_params)
-	  if @task.save
-		  redirect_to root_path
-	  else
-		  render 'new'
-	  end
+    @task = current_user.tasks.build(task_params)
+    if @task.save
+     redirect_to root_path
+    else
+     render 'new'
+    end
   end
 
   def update
-	  if @task.update(task_params)
-		  redirect_to root_path
-	  else
-		  render 'edit'
-	  end
+    if @task.update(task_params)
+     redirect_to root_path
+    else
+     render 'edit'
+    end
   end
 
   def destroy
-  	@task.destroy
+   @task.destroy
   end
 
   def complete
