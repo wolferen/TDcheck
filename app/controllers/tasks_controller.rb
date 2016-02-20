@@ -5,13 +5,13 @@ class TasksController < ApplicationController
   def index
     if user_signed_in?
       @search = Task.search(params[:q])
-      @tasks = @search.result.where(:user_id => current_user.id).order('created_at DESC')
+      @tasks = @search.result.where(user_id: current_user.id).order('created_at DESC')
     end
   end
 
   def new
     unless current_user
-      redirect_to new_user_session_path, notice: "You must be logged in to access this section"
+      redirect_to new_user_session_path, notice: 'You must be logged in to access this section'
     else
       @task = current_user.tasks.build
     end

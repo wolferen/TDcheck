@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
   def check_user
     unless current_user
-      redirect_to new_user_session_path, notice: "You must be logged in to access this section"
+      redirect_to new_user_session_path, notice: 'You must be logged in to access this section'
     end
   end
 end

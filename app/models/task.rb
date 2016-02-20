@@ -4,7 +4,7 @@ class Task < ActiveRecord::Base
 
   validates :title,
             :presence => {message: "Task can't be blank." },
-            :length => {:minimum => 4, :maximum => 60, message: "Task must be more than 4 and less than 60 characters."}
+            :length => { in: 4..60, message: 'Task must be more than 4 and less than 60 characters.' }
 
   def priority= value
     if value.kind_of?(String) and value.to_i.to_s == value

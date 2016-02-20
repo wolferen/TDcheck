@@ -5,33 +5,33 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel='stylesheet' href='//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
 </head>
 <body>
-  <nav class="navbar navbar-default">
-    <div class="container">
-     <div class="navbar-header">
-      <%= link_to "Todolist", root_path, class: "navbar-brand" %>
+  <nav class='navbar navbar-default'>
+    <div class='container'>
+     <div class='navbar-header'>
+      <%= link_to 'Todolist', root_path, class: 'navbar-brand' %>
      </div>
-      <ul class="nav navbar-nav">
-       <li><%= link_to "Sign Up", new_user_registration_path %></li>
+      <ul class='nav navbar-nav'>
+       <li><%= link_to 'Sign Up', new_user_registration_path %></li>
        <% if current_user.present? %>
-        <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+        <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
         <% else %>
-         <li><%= link_to "Log In", new_user_session_path %></li>
+         <li><%= link_to 'Log In', new_user_session_path %></li>
         <% end %>
       </ul>
       <% if user_signed_in? %>
-      <p class="navbar-text">Logged in as <%= current_user.email %></p>
-      <ul class="nav navbar-nav navbar-link navbar-right">
-        <li><%= link_to "New Task", new_task_path %></li>
+      <p class='navbar-text'>Logged in as <%= current_user.email %></p>
+      <ul class='nav navbar-nav navbar-link navbar-right'>
+        <li><%= link_to 'New Task', new_task_path %></li>
         </ul>
       <% end %>
     </div>
   </nav>
-  <p class="notice", align='center'><%= notice %></p>
-  <p class="alert", align='center'><%= alert %></p>
-  <div class="container">
+  <p class='notice', align='center'><%= notice %></p>
+  <p class='alert', align='center'><%= alert %></p>
+  <div class='container'>
   <%= yield %>
 </body>
 </html>
